@@ -17,6 +17,22 @@
           Add
         </button>
       </form>
+
+      <template x-for="todo in todos">
+        <div>
+          <input type="checkbox" x-model="todo.completed" />
+          <span
+            x-text="todo.name"
+            :class="{ completed : todo.completed}"
+          ></span>
+          <button
+            @click="todos = todos.filter((currTodo) => currTodo != todo)"
+            class="delete"
+          >
+            Remove
+          </button>
+        </div>
+      </template>
     </div>
   </body>
 </html>
