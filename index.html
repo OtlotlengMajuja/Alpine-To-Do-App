@@ -41,6 +41,13 @@
           </button>
         </div>
       </template>
+      <button @click="todos = []" x-show="todos.length">Clear All</button>
+    </div>
+
+    <div>
+        <span x-text="todos.filter((todo) => todo.completed).length"></span>/
+        <span x-text="todos.length"></span> to-dos completed
+      </div>
     </div>
   </body>
 </html>
