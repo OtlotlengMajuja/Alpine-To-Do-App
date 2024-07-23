@@ -1,53 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
-    <style>
-      .delete:hover {
-        cursor: pointer;
-      }
-      .completed {
-        text-decoration: line-through;
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Svelte</title>
   </head>
   <body>
-    <div x-data="{ todos: [], userInput: ''}">
-      <form x-on:submit.prevent>
-        <input x-model="userInput" placeholder="Enter to-do item" type="text" />
-        <button
-          x-on:click="if(userInput.trim().length) 
-            todos.push({name: userInput, completed: false}); userInput = ''"
-        >
-          Add
-        </button>
-      </form>
-
-      <template x-for="todo in todos">
-        <div>
-          <input type="checkbox" x-model="todo.completed" />
-          <span
-            x-text="todo.name"
-            :class="{ completed : todo.completed}"
-          ></span>
-          <button
-            @click="todos = todos.filter((currTodo) => currTodo != todo)"
-            class="delete"
-          >
-            Remove
-          </button>
-        </div>
-      </template>
-      <button @click="todos = []" x-show="todos.length">Clear All</button>
-    </div>
-
-    <div>
-        <span x-text="todos.filter((todo) => todo.completed).length"></span>/
-        <span x-text="todos.length"></span> to-dos completed
-      </div>
-    </div>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
