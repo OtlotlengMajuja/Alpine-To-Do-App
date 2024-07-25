@@ -21,4 +21,12 @@
 </TodoList>
 
 <style>
+  .custom-todo-item {
+    padding: 5px;
+    border: 1px solid #000;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-bottom: 1px solid blue;
+    color: blue;
+  }
 </style>
