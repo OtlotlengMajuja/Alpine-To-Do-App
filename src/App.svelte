@@ -2,6 +2,7 @@
   import svelteLogo from './assets/svelte.svg'
   import viteLogo from '/vite.svg'
   import Counter from './lib/Counter.svelte'
+  import TodoList from './lib/ToDoList.svelte';
 </script>
 
 <main>
@@ -13,8 +14,8 @@
       <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
     </a>
   </div>
-  <h1>Vite + Svelte</h1>
-
+  <h1>My Svelte App</h1>
+  <TodoList />
   <div class="card">
     <Counter />
   </div>
