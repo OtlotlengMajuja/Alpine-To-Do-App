@@ -1,11 +1,18 @@
 <script>
-    export let todos = ["Learn Svelte", "Build an app"];
+    export let todos = [];
 </script>
 
-<h1>To Do List</h1>
+<div class="todo-list">
+    <slot>
+        <p>No todos available</p>
+    </slot>
+</div>
 
-<ul>
+<div class="todo-items">
     {#each todos as todo}
-    <li>{todo}</li>
+    ``<slot name="todo" {todo}>
+        <div class="todo-item">{todo.text}</div>
+      </slot>
     {/each}
-</ul>
+</div>
+
