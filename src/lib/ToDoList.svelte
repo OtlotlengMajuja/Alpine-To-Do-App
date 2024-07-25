@@ -3,17 +3,27 @@
 </script>
 
 <div class="todo-list">
-    <slot>
+    <slot name="header">
+        <!-- Default slot content for header -->
         <p>No todos available</p>
     </slot>
 </div>
 
 <div class="todo-items">
-    {#each todos as todo}
-    ``<slot name="todo" {todo}>
-        <div class="todo-item">{todo.text}</div>
+    {#if todos.length > 0}
+    ``<slot name="todos">
+        <!-- Default content for each todo item if no named slot is provided -->
+        {#each todos as todo (todo.id)}
+            <div class="todo-item">{todo.text}</div>
+        {/each}
       </slot>
-    {/each}
+    {:else}
+        <!-- Slot for when there are no todos -->
+        <slot name="no-todos">
+            <!-- Default content if no slot content is provided -->
+            <p>No todos to display</p>
+        </slot>
+  {/if}
 </div>
 
 <style>
