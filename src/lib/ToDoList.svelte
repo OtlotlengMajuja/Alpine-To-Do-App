@@ -16,3 +16,18 @@
     {/each}
 </div>
 
+<style>
+    .todo-list {
+        padding: 10px;
+        border: 1px solid #ccc; 
+    }
+
+    .todo-items {
+        margin-top: 10px;
+    }
+
+    .todo-item {
+        padding: 5px;
+        border-bottom: 1px solid #ccc;
+    }
+</style>
