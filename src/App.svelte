@@ -7,7 +7,18 @@
     ]
 </script>
 
-<TodoList todos={myTodos} />
+<TodoList {todos}>
+  <div>
+    <h2>My To Do List</h2>
+    <p>You have{todos.length} todos:</p>
+  </div>
+
+  <div slot="todo" let:todo>
+    <div class="custom-todo-item">
+      <strong>{todo.text}</strong> (ID: {todo.id})
+    </div>
+  </div>
+</TodoList>
 
 <style>
 </style>
