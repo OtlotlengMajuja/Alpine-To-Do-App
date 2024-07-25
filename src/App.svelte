@@ -8,15 +8,22 @@
 </script>
 
 <TodoList {todos}>
-  <div>
+  <!-- General slot content -->
+  <div slot="header">
     <h2>My To Do List</h2>
     <p>You have{todos.length} todos:</p>
   </div>
 
-  <div slot="todo" let:todo>
+  <!-- Content to display when no todos are present-->
+  <p slot="no-todos">You have no todos. Add some tasks!</p>
+
+  <!-- Specific slot coontent for each todo item-->
+  <div slot="todos">
+    {#each todos as todo (todo.id)}
     <div class="custom-todo-item">
       <strong>{todo.text}</strong> (ID: {todo.id})
     </div>
+    {/each}
   </div>
 </TodoList>
 
