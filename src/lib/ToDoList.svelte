@@ -1,5 +1,5 @@
 <script>
-    let todos = ["Learn Svelte", "Build an app"];
+    export let todos = ["Learn Svelte", "Build an app"];
 </script>
 
 <h1>To Do List</h1>
