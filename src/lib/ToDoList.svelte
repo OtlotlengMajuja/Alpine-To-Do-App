@@ -1,43 +1,33 @@
 <script>
+    import { createEventDispatcher } from "svelte";
     export let todos = [];
+
+    const dispatch = createEventDispatcher();
+
+    function handleTodoClick(todo) {
+        dispatch("todoClick", todo);
+    }
 </script>
 
-<div class="todo-list">
-    <slot name="header">
-        <!-- Default slot content for header -->
-        <p>No todos available</p>
-    </slot>
-</div>
+<slot name="header"></slot>
 
-<div class="todo-items">
-    {#if todos.length > 0}
-    ``<slot name="todos">
-        <!-- Default content for each todo item if no named slot is provided -->
-        {#each todos as todo (todo.id)}
-            <div class="todo-item">{todo.text}</div>
-        {/each}
-      </slot>
-    {:else}
-        <!-- Slot for when there are no todos -->
-        <slot name="no-todos">
-            <!-- Default content if no slot content is provided -->
-            <p>No todos to display</p>
-        </slot>
-  {/if}
-</div>
+{#if todos.length === 0}
+  <slot name="no-todos"></slot>
+{:else}
+  <slot name="todos">
+    {#each todos as todo (todo.id)}
+      <div class="todo-item" on:click={() => handleTodoClick(todo)} role="button" tabindex="0" on:keydown={(e) => e.key === 'Enter' || e.key === ' ' ? handleTodoClick(todo) : null}>
+        {todo.text}
+      </div>
+    {/each}
+  </slot>
+{/if}
 
 <style>
-    .todo-list {
-        padding: 10px;
-        border: 1px solid #ccc; 
-    }
-
-    .todo-items {
-        margin-top: 10px;
-    }
-
     .todo-item {
         padding: 5px;
-        border-bottom: 1px solid #ccc;
+        border: 1px solid #ccc;
+        margin-bottom: 5px;
+        cursor: pointer;
     }
 </style>
