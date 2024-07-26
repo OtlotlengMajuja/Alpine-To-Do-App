@@ -4,14 +4,22 @@
     {id: 1, text: "Learn Svelte"},
     {id: 2, text: "Build a project"},
     {id: 3, text: "Deploy the project"}
-    ]
+  ];
+
+  /**
+   * @param {{detail: any;}} event
+  */
+    function handleTodoClick(event) {
+      const clickedTodo = event.detail;
+      console.log("To do clicked:", clickedTodo.text);
+    }
 </script>
 
-<TodoList {todos}>
+<TodoList {todos} on:todoClick={handleTodoClick}>
   <!-- General slot content -->
   <div slot="header">
     <h2>My To Do List</h2>
-    <p>You have{todos.length} todos:</p>
+    <p>You have {todos.length} todos:</p>
   </div>
 
   <!-- Content to display when no todos are present-->
