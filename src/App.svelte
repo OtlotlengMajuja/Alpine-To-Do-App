@@ -28,9 +28,9 @@
   <!-- Specific slot coontent for each todo item-->
   <div slot="todos">
     {#each todos as todo (todo.id)}
-    <div class="custom-todo-item">
+    <button class="custom-todo-item" on:click={() => handleTodoClick({ detail: todo })}>
       <strong>{todo.text}</strong> (ID: {todo.id})
-    </div>
+    </button>
     {/each}
   </div>
 </TodoList>
@@ -40,8 +40,11 @@
     padding: 5px;
     border: 1px solid #000;
     margin-bottom: 5px;
-    padding: 5px;
     border-bottom: 1px solid blue;
     color: blue;
+    cursor: pointer;
+    background: none;
+    border: none;
+    text-align: left;
   }
 </style>
